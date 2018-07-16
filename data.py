@@ -66,7 +66,10 @@ class Data(object):
     return X, Y
   
   def resize(X):
-    return df
+    return resize(X, [IMG_HEIGHT, IMG_WIDTH, 3], preserve_range=True)
   
-  def reshape(X):
-    
+  def reshape(X, Y):
+    '''
+    X: the image data to be reshaped.
+    Y: What to reshape it into.'''
+    return tf.reshape(X, Y)
