@@ -7,6 +7,7 @@ import os
 
 from skimage.io import imread, imshow
 from skimage.transform import resize
+from random import shuffle
 
 import main
 
@@ -46,10 +47,24 @@ class Data(object):
         
     return 0
   
+  def load_image(file):
+    in_ = imread(self.dir + '/' + file)
+    out_ = 
+    
+    return in_, out
+  
   def load_batch(self, batch_size):
     X = np.zeros((batch_size, main.IMG_HEIGHT, main.IMG_WIDTH, 3) dtype=np.float32)
-    Y = np.zeros((batch_size, main.IMG_HEIGHT, main.IMG_WIDTH, 3) dtype=np.float32)
+    Y = np.zeros((batch_size, main.OUT_HEIGHT, main.OUT_WIDTH, 5) dtype=np.float32)
     
+    for i in range(0, batch_size):
+      
+      temp = self.files[0]
+      X[i], Y[i] = self.load_image(temp)
+      self.files.remove(temp)
+    
+    return X, Y
+  
   def resize(X):
     return df
   
